@@ -1,6 +1,7 @@
 {
     "name": "sameyasu/php-sample",
     "type": "project",
+    "description": "PHP Samples",
     "require": {
         "monolog/monolog": "^2.0"
     },

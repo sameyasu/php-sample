@@ -19,5 +19,7 @@ class Main
             $this->logger->debug('Count',['value' => $v]);
             sleep(1);
         }
+
+        echo 'Sooooooooooooooooooooooooooo loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text in a line';
     }
 }

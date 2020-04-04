@@ -28,4 +28,4 @@ jobs:
 
     - name: Run phpcs
       run: |
-        ./vendor/bin/phpcs --basepath=$(pwd) src
+        ./vendor/bin/phpcs --basepath=$(pwd) --standard=PSR12 src

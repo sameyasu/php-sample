@@ -1,0 +1,10 @@
+{
+    "name": "sameyasu/php-sample",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    }
+}

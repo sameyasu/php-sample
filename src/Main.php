@@ -15,6 +15,9 @@ class Main
 
     public function run() : void
     {
-        $this->logger->info('Ran');
+        foreach(range(10, 1, -1) as $v) {
+            $this->logger->debug('Count',['value' => $v]);
+            sleep(1);
+        }
     }
 }

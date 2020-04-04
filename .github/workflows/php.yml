@@ -25,3 +25,7 @@ jobs:
 
     # - name: Run test suite
     #   run: composer run-script test
+
+    - name: Run phpcs
+      run: |
+        ./vendor/bin/phpcs --basepath=$(pwd) --standard=PSR12 src

@@ -13,13 +13,14 @@ class Main
         $this->initLogger();
     }
 
-    public function run() : void
+    public function run(): void
     {
-        foreach(range(10, 1, -1) as $v) {
-            $this->logger->debug('Count',['value' => $v]);
+        foreach (range(10, 1, -1) as $v) {
+            $this->logger->debug('Count', ['value' => $v]);
             sleep(1);
         }
 
-        echo 'Sooooooooooooooooooooooooooo loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text in a line';
+        echo 'Sooooooooooooooooooooooooooo loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong ' .
+            'text in a line';
     }
 }

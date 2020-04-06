@@ -21,5 +21,7 @@ class Main
         }
 
         echo 'Sooooooooooooooooooooooooooo loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text in a line';
+
+        echo 'ABC'.'DEF'.PHP_EOL;
     }
 }

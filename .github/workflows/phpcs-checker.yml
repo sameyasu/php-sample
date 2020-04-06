@@ -1,0 +1,40 @@
+name: phpcs Checker
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Fetch base commit
+      run: |
+        git fetch --depth=1 origin ${{ github.event.pull_request.base.ref }}
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run phpcs only modified files
+      run: |
+        git diff \
+            --name-only --diff-filter=AM \
+            ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} \
+            | xargs ./vendor/bin/phpcs -v --basepath=$(pwd) --standard=PSR12 --report=json --report-file=phpcs-report.json \
+            | tee
+        if [ -f phpcs-report.json ]
+        then
+            echo 'Result:'
+            jq '. | {totals}' phpcs-report.json
+        else
+            echo "No files to check."
+        fi

@@ -29,5 +29,11 @@ jobs:
         git diff \
             --name-only --diff-filter=AM \
             ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | \
-            xargs ./vendor/bin/phpcs -v --basepath=$(pwd) --standard=PSR12 --report=json --report-file=phpcs-result.json
-        jq . phpcs-result.json
+            xargs ./vendor/bin/phpcs -v --basepath=$(pwd) --standard=PSR12 --report=json --report-file=phpcs-report.json
+        if [ -f phpcs-report.json ]
+        then
+            echo 'Result:'
+            jq '. | {totals}' phpcs-report.json
+        else
+            echo "No files to check."
+        fi

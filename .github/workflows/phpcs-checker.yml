@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run phpcs modified files
+    - name: Run phpcs only modified files
       run: |
         git diff \
             --name-only --diff-filter=AM \

@@ -28,8 +28,9 @@ jobs:
       run: |
         git diff \
             --name-only --diff-filter=AM \
-            ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | \
-            xargs ./vendor/bin/phpcs -v --basepath=$(pwd) --standard=PSR12 --report=json --report-file=phpcs-report.json
+            ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} \
+            | xargs ./vendor/bin/phpcs -v --basepath=$(pwd) --standard=PSR12 --report=json --report-file=phpcs-report.json \
+            | tee
         if [ -f phpcs-report.json ]
         then
             echo 'Result:'

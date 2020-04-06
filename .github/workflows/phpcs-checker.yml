@@ -14,7 +14,7 @@ jobs:
 
     - name: Fetch base commit
       run: |
-        git fetch --depth=1 ${{ github.event.pull_request.base.sha }}
+        git fetch --depth=1 origin ${{ github.event.pull_request.base.ref }}
 
     - name: Validate composer.json and composer.lock
       run: composer validate
